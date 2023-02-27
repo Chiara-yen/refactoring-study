@@ -32,9 +32,12 @@ function statement(customer, movies) {
     return (movieFor(r).code === "new" && r.days > 2) ? 2 : 1;
   }
 
-  let frequentRenterPoints = 0;
-  for (let r of customer.rentals) {
-    frequentRenterPoints += frequentRenterPointsFor(r);
+  function totalPoints() {
+    let frequentRenterPoints = 0;
+    for (let r of customer.rentals) {
+      frequentRenterPoints += frequentRenterPointsFor(r);
+    }
+    return frequentRenterPoints;
   }
 
   let result = `Rental Record for ${customer.name}\n`;
@@ -49,7 +52,7 @@ function statement(customer, movies) {
   }
   // add footer lines
   result += `Amount owed is ${totalAmount}\n`;
-  result += `You earned ${frequentRenterPoints} frequent renter points\n`;
+  result += `You earned ${(totalPoints())} frequent renter points\n`;
 
   return result;
 }
