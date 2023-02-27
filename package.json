@@ -4,7 +4,7 @@
   "description": "reading the example of refactoring",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "author": "Chiara Yen",
   "license": "ISC",
