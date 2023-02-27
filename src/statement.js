@@ -45,11 +45,9 @@ function statement(customer, movies) {
   }
 
   function getTotalPoints() {
-    let result = 0;
-    for (let r of customer.rentals) {
-      result += frequentRenterPointsFor(r);
-    }
-    return result;
+    return customer.rentals
+      .map((r) => frequentRenterPointsFor(r))
+      .reduce((acc, curr) => acc + curr, 0);
   }
 
   function getTotalAmount() {
