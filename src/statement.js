@@ -1,9 +1,5 @@
 // TODO: new request to get HTML version result
 function statement(customer, movies) {
-  let totalAmount = 0;
-  let frequentRenterPoints = 0;
-  let result = `Rental Record for ${customer.name}\n`;
-
   function movieFor(rental) {
     return movies[rental.movieID];
   }
@@ -36,13 +32,18 @@ function statement(customer, movies) {
     return (movieFor(r).code === "new" && r.days > 2) ? 2 : 1;
   }
 
+  let frequentRenterPoints = 0;
   for (let r of customer.rentals) {
     frequentRenterPoints += frequentRenterPointsFor(r);
   }
+
+  let result = `Rental Record for ${customer.name}\n`;
   for (let r of customer.rentals) {
     //print figures for this rental
     result += `\t${movieFor(r).title}\t${(amountFor(r))}\n` ;
   }
+
+  let totalAmount = 0;
   for (let r of customer.rentals) {
     totalAmount += amountFor(r);
   }
