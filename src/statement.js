@@ -38,9 +38,12 @@ function statement(customer, movies) {
 
   for (let r of customer.rentals) {
     frequentRenterPoints += frequentRenterPointsFor(r);
-
+  }
+  for (let r of customer.rentals) {
     //print figures for this rental
     result += `\t${movieFor(r).title}\t${(amountFor(r))}\n` ;
+  }
+  for (let r of customer.rentals) {
     totalAmount += amountFor(r);
   }
   // add footer lines
