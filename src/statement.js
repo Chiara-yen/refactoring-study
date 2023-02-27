@@ -33,10 +33,7 @@ function statement(customer, movies) {
   }
 
   function frequentRenterPointsFor(r) {
-    let result = 1;
-    // add bonus for a two day new release rental
-    if (movieFor(r).code === "new" && r.days > 2) result++;
-    return result
+    return (movieFor(r).code === "new" && r.days > 2) ? 2 : 1;
   }
 
   for (let r of customer.rentals) {
