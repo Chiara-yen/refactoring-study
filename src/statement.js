@@ -46,12 +46,16 @@ function statement(customer, movies) {
     result += `\t${movieFor(r).title}\t${(amountFor(r))}\n` ;
   }
 
-  let totalAmount = 0;
-  for (let r of customer.rentals) {
-    totalAmount += amountFor(r);
+  function getTotalAmount() {
+    let totalAmount = 0;
+    for (let r of customer.rentals) {
+      totalAmount += amountFor(r);
+    }
+    return totalAmount;
   }
+
   // add footer lines
-  result += `Amount owed is ${totalAmount}\n`;
+  result += `Amount owed is ${(getTotalAmount())}\n`;
   result += `You earned ${(totalPoints())} frequent renter points\n`;
 
   return result;
