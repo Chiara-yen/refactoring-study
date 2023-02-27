@@ -51,11 +51,8 @@ function statement(customer, movies) {
   }
 
   function getTotalAmount() {
-    let result = 0;
-    for (let r of customer.rentals) {
-      result += amountFor(r);
-    }
-    return result;
+    return customer.rentals
+      .reduce((total, r) => total + amountFor(r), 0);
   }
 }
 
