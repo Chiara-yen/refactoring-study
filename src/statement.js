@@ -33,11 +33,11 @@ function statement(customer, movies) {
   }
 
   function getTotalPoints() {
-    let frequentRenterPoints = 0;
+    let result = 0;
     for (let r of customer.rentals) {
-      frequentRenterPoints += frequentRenterPointsFor(r);
+      result += frequentRenterPointsFor(r);
     }
-    return frequentRenterPoints;
+    return result;
   }
 
   let result = `Rental Record for ${customer.name}\n`;
@@ -47,11 +47,11 @@ function statement(customer, movies) {
   }
 
   function getTotalAmount() {
-    let totalAmount = 0;
+    let result = 0;
     for (let r of customer.rentals) {
-      totalAmount += amountFor(r);
+      result += amountFor(r);
     }
-    return totalAmount;
+    return result;
   }
 
   // add footer lines
