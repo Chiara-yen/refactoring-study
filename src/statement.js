@@ -1,3 +1,4 @@
+// TODO: new request to get HTML version result
 function statement(customer, movies) {
   let totalAmount = 0;
   let frequentRenterPoints = 0;
