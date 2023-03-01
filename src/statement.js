@@ -1,16 +1,20 @@
 // TODO: new request to get HTML version result
 function statement(customer, movies) {
-  let result = `Rental Record for ${customer.name}\n`;
-  for (let r of customer.rentals) {
-    //print figures for this rental
-    result += `\t${movieFor(r).title}\t${(amountFor(r))}\n` ;
+  return renderText();
+
+  function renderText() {
+    let result = `Rental Record for ${customer.name}\n`;
+    for (let r of customer.rentals) {
+      //print figures for this rental
+      result += `\t${movieFor(r).title}\t${(amountFor(r))}\n`;
+    }
+
+    // add footer lines
+    result += `Amount owed is ${(getTotalAmount())}\n`;
+    result += `You earned ${(getTotalPoints())} frequent renter points\n`;
+
+    return result;
   }
-
-  // add footer lines
-  result += `Amount owed is ${(getTotalAmount())}\n`;
-  result += `You earned ${(getTotalPoints())} frequent renter points\n`;
-
-  return result;
 
   function movieFor(rental) {
     return movies[rental.movieID];
