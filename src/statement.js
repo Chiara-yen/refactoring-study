@@ -1,8 +1,9 @@
-// TODO: new request to get HTML version result
 function statement(customer, movies, format = 'text') {
   switch (format) {
     case "text":
       return renderText();
+    case "html":
+      return renderHTML();
   }
   throw new Error(`unknown statement format ${format}`);
 
@@ -17,6 +18,18 @@ function statement(customer, movies, format = 'text') {
     result += `Amount owed is ${(getTotalAmount())}\n`;
     result += `You earned ${(getTotalPoints())} frequent renter points\n`;
 
+    return result;
+  }
+
+  function renderHTML() {
+    let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
+    result += "<table>\n";
+    for (let r of customer.rentals) {
+      result += `  <tr><td>${movieFor(r).title}</td><td>${amountFor(r)}</td></tr>\n`;
+    }
+    result += "</table>\n";
+    result += `<p>Amount owed is <em>${getTotalAmount()}</em></p>\n`;
+    result += `<p>You earned <em>${getTotalPoints()}</em> frequent renter points</p>\n`;
     return result;
   }
 
