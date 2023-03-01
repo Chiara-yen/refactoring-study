@@ -1,6 +1,10 @@
 // TODO: new request to get HTML version result
-function statement(customer, movies) {
-  return renderText();
+function statement(customer, movies, format = 'text') {
+  switch (format) {
+    case "text":
+      return renderText();
+  }
+  throw new Error(`unknown statement format ${format}`);
 
   function renderText() {
     let result = `Rental Record for ${customer.name}\n`;
